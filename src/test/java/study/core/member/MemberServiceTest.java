@@ -1,3 +1,4 @@
+// MemberApp이랑 거의 같넹?
 package study.core.member;
 
 import org.assertj.core.api.Assertions;
