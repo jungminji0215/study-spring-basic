@@ -1,22 +1,24 @@
 package study.core.order;
 
 import study.core.discount.DiscountPolicy;
-import study.core.discount.FixDiscountPolicy;
-import study.core.discount.RateDiscountPolicy;
 import study.core.member.Member;
 import study.core.member.MemberRepository;
-import study.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService {
 
-//    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final MemberRepository memberRepository;
+    /*
+        private final MemberRepository memberRepository = new MemoryMemberRepository();
 
-//    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
-    // 새로운 할인 정책으로 변경해봄 -> 이것은... OCP를 위반한 코드이다. 변경이 일어남...
-//    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+        private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
+
+        새로운 할인 정책으로 변경해봄 -> 이것은... OCP를 위반한 코드이다. 변경이 일어남...
+        private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
+     */
+
     // 다음과 같이 변경하면 된다. 그리고 구현체는 OrderServiceImpl 전 단계에서 DiscountPolicy의 구현 객체를 대신 생성하고 주입해줘야 한다.
     private final DiscountPolicy discountPolicy;
+
+    private final MemberRepository memberRepository;
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
